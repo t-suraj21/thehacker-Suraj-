@@ -1,0 +1,17 @@
+.news-section {
+  background: linear-gradient(45deg, #f79c42, #8e44ad);
+  padding: 3rem 2rem;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.news-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.news-section p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}

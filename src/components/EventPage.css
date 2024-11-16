@@ -1,0 +1,14 @@
+.events-page {
+    background: #ff6b6b;
+    padding: 3rem;
+    text-align: center;
+    color: white;
+  }
+  
+  .event-card {
+    background: #8e44ad;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    border-radius: 10px;
+  }
+  

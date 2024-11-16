@@ -1,0 +1,27 @@
+.banner {
+  background: linear-gradient(45deg, #ff6b6b, #8e44ad);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+}
+
+.anime-mascot {
+  width: 8rem;
+  height: 8rem;
+  margin-bottom: 20px;
+}
+
+.banner-heading {
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.banner-subheading {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}

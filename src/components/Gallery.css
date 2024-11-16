@@ -1,0 +1,13 @@
+.gallery {
+    background: #f79c42;
+    padding: 3rem 2rem;
+    text-align: center;
+    color: white;
+  }
+  
+  .gallery-images {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
