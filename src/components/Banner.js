@@ -1,18 +1,25 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import animeMascot from '../assets/image.png'; // Use an anime character image
 import './Banner.css';
 
 const Banner = () => {
   return (
     <div className="banner">
-      <motion.img
-        src={animeMascot}
-        alt="Anime Mascot"
-        className="anime-mascot"
-        animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.1, 1] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      />
+      {/* Rotating background stars and moon */}
+      <div className="background-animations">
+        <motion.div
+          className="starry-sky"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        />
+        <motion.div
+          className="moon"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        />
+      </div>
+
+      {/* Title and Subheading */}
       <motion.h1
         className="banner-heading"
         initial={{ opacity: 0 }}
@@ -21,6 +28,7 @@ const Banner = () => {
       >
         Welcome to Anime College Hub!
       </motion.h1>
+      
       <motion.p
         className="banner-subheading"
         initial={{ opacity: 0 }}

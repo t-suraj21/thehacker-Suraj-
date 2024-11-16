@@ -1,14 +1,77 @@
 .events-page {
-    background: #ff6b6b;
-    padding: 3rem;
-    text-align: center;
-    color: white;
+  padding: 30px;
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  margin-top: 10vh;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 32px;
+}
+
+p {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 18px;
+  color: #555;
+}
+
+.events-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.event-card {
+  display: flex;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.event-card:hover {
+  transform: scale(1.05);
+}
+
+.event-icon {
+  margin-right: 20px;
+}
+
+.event-icon img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.event-info {
+  flex-grow: 1;
+}
+
+.event-info h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.event-info p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #444;
+}
+
+.countdown {
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+@media (max-width: 768px) {
+  .events-list {
+    grid-template-columns: 1fr;
   }
-  
-  .event-card {
-    background: #8e44ad;
-    padding: 1.5rem;
-    margin-top: 1.5rem;
-    border-radius: 10px;
-  }
-  
+}

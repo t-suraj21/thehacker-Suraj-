@@ -1,19 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${isMenuOpen ? 'open' : ''}`}>
       <div className="navbar-container">
         <div className="brand">Anime Hub</div>
-        <div className="navbar-links">
-          <Link to="/">Home</Link>
-          <Link to="/news">News</Link>
-          <Link to="/events">Events</Link>
-          <Link to="/clubs">Clubs</Link>
-          <Link to="/gallery">Gallery</Link>
-          <Link to="/contact">Contact Us</Link>
+
+        {/* Hamburger Icon */}
+        <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={handleMenuToggle}>
+          <span className="line"></span>
+          <span className="line"></span>
+          <span className="line"></span>
+        </div>
+
+        <div className={`navbar-links ${isMenuOpen ? 'active' : ''}`}>
+          <Link to="/" className="nav-link">Home</Link>
+          <Link to="/news" className="nav-link">News</Link>
+          <Link to="/events" className="nav-link">Events</Link>
+          <Link to="/club" className="nav-link">Clubs</Link>
+          <Link to="/gallery" className="nav-link">Gallery</Link>
+          <Link to="/contact" className="nav-link">Contact Us</Link>
+          
         </div>
       </div>
     </nav>

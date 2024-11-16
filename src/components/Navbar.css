@@ -1,6 +1,13 @@
+/* Navbar Styles */
 .navbar {
-  background: #8e44ad;
-  padding: 1rem 2rem;
+  background-color: #8b0000; /* Dark red color */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 15px 20px;
+  transition: background-color 0.3s ease;
 }
 
 .navbar-container {
@@ -9,18 +16,113 @@
   align-items: center;
 }
 
-.navbar-links {
-  display: flex;
-  gap: 1.5rem;
+.brand {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
 }
 
-.navbar-links a {
+.navbar-links {
+  display: flex;
+  gap: 30px;
+  margin-right: 10vh;
+}
+
+.navbar-links .nav-link {
   color: white;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 18px;
+  position: relative;
   transition: color 0.3s ease;
 }
 
-.navbar-links a:hover {
-  color: #f79c42;
+/* Line Effect on Hover */
+.navbar-links .nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #ffffff;
+  transition: width 0.3s ease;
+}
+
+/* When hovering, the line will expand */
+.navbar-links .nav-link:hover::after {
+  width: 100%;
+  transform: translateY(5px); /* Optional: for a slight offset */
+}
+
+/* Navbar Links (Mobile) */
+.navbar-links.active {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  background-color: #8b0000;
+  width: 100%;
+  padding: 20px;
+}
+
+.navbar-links.active .nav-link {
+  font-size: 22px;
+}
+
+.navbar-links.active .nav-link:hover {
+  transform: none;
+}
+
+/* Hamburger Icon Styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  justify-content: space-around;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+}
+
+.hamburger .line {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Show the lines when nav-link is hovered */
+.navbar-links .nav-link:hover ~ .hamburger .line {
+  opacity: 1; /* Show lines when a nav-link is hovered */
+}
+
+.hamburger.open .line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.open .line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open .line:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+    margin-right: 0vh;
+  }
+  .navbar-container {
+    padding: 10px 15px;  /* Adjust padding if needed */
+  }
 }
