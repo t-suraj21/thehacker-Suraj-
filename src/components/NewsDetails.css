@@ -1,8 +1,8 @@
-/* General Styling for the Section */
+/* General Section Styling */
 .news-details {
   padding: 20px;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 60px auto;
   font-family: Arial, sans-serif;
 }
 
@@ -92,27 +92,17 @@
 /* Responsive Adjustments */
 @media (max-width: 1024px) {
   .news-article {
-    width: calc(50% - 20px); /* Reduce column count */
-  }
-
-  .news-details h2,
-  .news-details h3 {
-    font-size: 1.5rem;
+    width: calc(50% - 20px);
   }
 }
 
 @media (max-width: 768px) {
   .news-article {
-    width: 100%; /* Single column layout */
+    width: 100%;
   }
 
   .small-news-grid {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  }
-
-  .news-details h2,
-  .news-details h3 {
-    font-size: 1.2rem;
   }
 }
 
@@ -129,6 +119,7 @@
 
   .news-details h2,
   .news-details h3 {
-    font-size: 1rem;
+    font-size: 1.5rem;
+    margin-top: 10vh;
   }
 }

@@ -7,9 +7,8 @@ const NewsDetails = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   // Replace with a real API endpoint
-  const apiUrl = 'https://cdn.animenewsnetwork.com/encyclopedia/api.xml?genre=2&api_key=YOUR_API_KEY';
+  const apiUrl = 'https://api.jikan.moe/v4/anime'; // Example of a valid API URL
 
-  // Fetch news from the API
   useEffect(() => {
     const fetchNews = async () => {
       try {
@@ -17,19 +16,17 @@ const NewsDetails = () => {
         if (response.ok) {
           const data = await response.json();
 
-          // Map API response to desired structure
           const formattedNews = data.data.map((item) => ({
-            title: item.title, // Anime title
-            content: item.synopsis || 'No description available.', // Anime synopsis
-            image: item.images.jpg.image_url, // Anime image
-            isExpanded: false, // Track whether the content is expanded
+            title: item.title || 'No Title', // Fallback if title is missing
+            content: item.synopsis || 'No description available.', // Fallback if synopsis is missing
+            image: item.images?.jpg?.image_url || 'placeholder-image-url.jpg', // Fallback if image is missing
+            isExpanded: false,
           }));
 
-          // Split the news into main articles and additional articles
           setNewsArticles(formattedNews.slice(0, 3)); // First 3 articles
-          setAdditionalNews(formattedNews.slice(3)); // Rest as additional articles
+          setAdditionalNews(formattedNews.slice(3)); // Remaining articles
         } else {
-          console.error('Failed to fetch news.');
+          console.error('Failed to fetch news. Status:', response.status);
         }
       } catch (error) {
         console.error('Error fetching news:', error);
@@ -41,7 +38,6 @@ const NewsDetails = () => {
     fetchNews();
   }, []);
 
-  // Toggle the "Read More" state for an article
   const toggleReadMore = (index, isMain) => {
     if (isMain) {
       setNewsArticles((prevArticles) =>
@@ -89,22 +85,26 @@ const NewsDetails = () => {
             ))}
           </div>
 
-          <h3 className="small-news-heading">Other News</h3>
-          <div className="small-news-grid">
-            {additionalNews.map((news, index) => (
-              <div key={index} className="small-news-box">
-                <img src={news.image} alt={news.title} className="small-news-image" />
-                <h4>{news.title}</h4>
-                <p>{truncateContent(news.content, news.isExpanded)}</p>
-                <button
-                  onClick={() => toggleReadMore(index, false)}
-                  className="read-more-button"
-                >
-                  {news.isExpanded ? 'Read Less' : 'Read More'}
-                </button>
+          {additionalNews.length > 0 && (
+            <>
+              <h3 className="small-news-heading">Other News</h3>
+              <div className="small-news-grid">
+                {additionalNews.map((news, index) => (
+                  <div key={index} className="small-news-box">
+                    <img src={news.image} alt={news.title} className="small-news-image" />
+                    <h4>{news.title}</h4>
+                    <p>{truncateContent(news.content, news.isExpanded)}</p>
+                    <button
+                      onClick={() => toggleReadMore(index, false)}
+                      className="read-more-button"
+                    >
+                      {news.isExpanded ? 'Read Less' : 'Read More'}
+                    </button>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </>
+          )}
         </>
       )}
     </section>
